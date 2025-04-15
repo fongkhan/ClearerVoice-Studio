@@ -2,7 +2,9 @@ import argparse
 import json
 import yamlargparse
 import torch.nn as nn
+import os
 
+config_path_os = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'ClearerVoiceStudio\\clearvoice')
 class network_wrapper(nn.Module):
     """
     A wrapper class for loading different neural network models for tasks such as 
@@ -26,7 +28,7 @@ class network_wrapper(nn.Module):
         Sets the configuration path and parses all the required parameters such as 
         input/output paths, model settings, and FFT parameters.
         """
-        self.config_path = 'config/inference/' + self.model_name + '.yaml'
+        self.config_path = config_path_os + '\\config\\inference\\' + self.model_name + '.yaml'
         parser = yamlargparse.ArgumentParser("Settings")
 
         # General model and inference settings
@@ -60,7 +62,7 @@ class network_wrapper(nn.Module):
         This method sets parameters such as input/output paths, model configurations, 
         and encoder/decoder settings for the MossFormer2-based speech separation model.
         """
-        self.config_path = 'config/inference/' + self.model_name + '.yaml'
+        self.config_path = config_path_os + '\\config\\inference\\' + self.model_name + '.yaml'
         parser = yamlargparse.ArgumentParser("Settings")
 
         # General model and inference settings
@@ -111,7 +113,7 @@ class network_wrapper(nn.Module):
         Sets the configuration path and parses all the required parameters such as
         input/output paths, model settings, and FFT parameters.
         """
-        self.config_path = 'config/inference/' + self.model_name + '.yaml'
+        self.config_path = config_path_os + '\\config\\inference\\' + self.model_name + '.yaml'
         parser = yamlargparse.ArgumentParser("Settings")
 
         # General model and inference settings
@@ -141,7 +143,7 @@ class network_wrapper(nn.Module):
         Loads the arguments for the target speaker extraction (TSE) task using a YAML config file.
         Parameters include input/output paths, CUDA configurations, and decoding parameters.
         """
-        self.config_path = 'config/inference/' + self.model_name + '.yaml'
+        self.config_path = config_path_os + '\\config\\inference\\' + self.model_name + '.yaml'
         parser = yamlargparse.ArgumentParser("Settings")
 
         # General model and inference settings
